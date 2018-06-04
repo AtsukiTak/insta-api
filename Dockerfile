@@ -10,6 +10,6 @@ RUN apk add --update \
       py-pip
 
 RUN pip3 install --upgrade pip && \
-    pip3 install selenium beautifulsoup4
+    pip3 install selenium beautifulsoup4 bottle
 
-COPY scraper.py /root/scraper.py
+WORKDIR /home/scraper
