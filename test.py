@@ -1,4 +1,4 @@
 from time import time
-import api_server
+import server
 
-api_server.run_server('0.0.0.0', 8842)
+server.run_server('0.0.0.0', 8842)
