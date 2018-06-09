@@ -11,7 +11,9 @@ driver = init_driver()
 
 @get('/posts/<post_id>')
 def get_post_by_id(post_id):
-    return PostScraper(driver).scrape(post_id)
+    post = PostScraper(driver).scrape(post_id)
+    post['post_id'] = post_id
+    return post
 
 @get('/posts')
 def get_posts():

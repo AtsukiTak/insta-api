@@ -21,7 +21,7 @@ class TagScraper:
         This method takes around 3 seconds. Caller must take care about it.
 
         :return:    A list of instagram post dictionary.
-        :rtype:     [{img_url: "", post_id: ""}]
+        :rtype:     [{image_url: "", post_id: ""}]
         """
 
         self.driver.get(TagScraper.scrape_base_url + hashtag + "/")
@@ -37,5 +37,5 @@ def scan_html(html):
         img_url = img_tag['src']
         post_path = img_tag.parent.parent.parent['href']
         post_id = regex.match(post_path).group(1)
-        insta_posts.append({'img_url': img_url, 'post_id': post_id})
+        insta_posts.append({'image_url': img_url, 'post_id': post_id})
     return insta_posts
