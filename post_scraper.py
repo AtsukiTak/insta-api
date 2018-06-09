@@ -31,4 +31,5 @@ class PostScraper:
 def scan_html(html):
     soup = BeautifulSoup(html, "html.parser")
     uname = soup.select_one("header div div div a").string
-    return {"user_name": uname}
+    image_url = soup.select("img")[1]['src']
+    return {"user_name": uname, "image_url": image_url}
