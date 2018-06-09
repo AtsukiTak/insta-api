@@ -24,8 +24,8 @@ None
 ##### Body
 ```json
 {
-  "image_url": "hoge",
-  "post_id": "hoge,
+  "image_url": "string",
+  "post_id": "string,
 }
 ```
 
@@ -46,6 +46,7 @@ None
 
 ```json
 {
-  "user_name": "hoge",
+  "post_id": "string",
+  "user_name": "string",
 }
 ```
