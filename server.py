@@ -2,6 +2,7 @@
 from http.server import HTTPServer, BaseHTTPRequestHandler
 from socketserver import ThreadingMixIn
 from bottle import get, run, request, abort
+import os
 
 from tag_scraper import TagScraper
 from post_scraper import PostScraper
@@ -23,5 +24,10 @@ def get_posts():
     posts = TagScraper(driver).scrape(hashtag)
     return {'posts': posts}
 
-def run_server(host, port):
-    run(host = host, port = port, debug = True)
+def run_server():
+    host = os.getenv("HOST", "0.0.0.0")
+    port = os.getenv("PORT", "8000")
+    debug = os.getenv("DEBUG", True)
+    run(host = host, port = port, debug = debug)
+
+run_server()
