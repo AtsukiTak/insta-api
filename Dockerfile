@@ -13,3 +13,7 @@ RUN pip3 install --upgrade pip && \
     pip3 install selenium beautifulsoup4 bottle
 
 WORKDIR /home/scraper
+
+COPY . /home/scraper
+
+ENTRYPOINT ["python", "server.py"]
