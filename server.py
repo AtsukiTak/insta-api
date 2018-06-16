@@ -30,7 +30,12 @@ def get_post(post_id):
     print("get post : %s" % post_id)
     looter = PostLooter(post_id)
     post = looter.get_post_info(post_id)
-    return post
+    res = {
+        "id": post["shortcode"],
+        "user_name": post["owner"]["username"],
+        "image_url": post["display_url"],
+    }
+    return res
 
 def run_server():
     host = os.getenv("HOST", "0.0.0.0")
