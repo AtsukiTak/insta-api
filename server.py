@@ -13,14 +13,15 @@ def get_hashtag(hashtag):
     print("get hashtag : %s" % hashtag)
     looter = HashtagLooter(hashtag)
     medias = islice(looter.medias(), 100)
-    res = list(map(media_to_dict, medias))
+    res = list(map(lambda m: media_to_dict(m, hashtag), medias))
     return { "res": res }
 
-def media_to_dict(media):
+def media_to_dict(media, hashtag):
     dic = {
         "id": media["shortcode"],
         "image_url": media["display_url"],
         "user_id": media["owner"]["id"],
+        "hashtag": hashtag,
     }
     return dic
 
