@@ -1,14 +1,11 @@
 # coding: UTF-8
-from bottle import get, Bottle
-from paste import httpserver
+from bottle import get, run
 from instalooter.looters import HashtagLooter, PostLooter
 
 from itertools import islice
 import os
 
-app = Bottle()
-
-@app.get('/hashtags/<hashtag>')
+@get('/hashtags/<hashtag>')
 def get_hashtag(hashtag):
     print("get hashtag : %s" % hashtag)
     looter = HashtagLooter(hashtag)
@@ -26,7 +23,7 @@ def media_to_dict(media, hashtag):
     return dic
 
 
-@app.get('/posts/<post_id>')
+@get('/posts/<post_id>')
 def get_post(post_id):
     print("get post : %s" % post_id)
     looter = PostLooter(post_id)
@@ -42,6 +39,6 @@ def run_server():
     host = os.getenv("HOST", "0.0.0.0")
     port = os.getenv("PORT", "8000")
     debug = os.getenv("DEBUG", True)
-    httpserver.serve(app, host = host, port = port)
+    run(host = host, port = port, debug = debug)
 
 run_server()
